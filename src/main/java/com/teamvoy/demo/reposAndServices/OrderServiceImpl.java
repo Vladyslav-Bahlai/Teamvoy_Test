@@ -21,7 +21,7 @@ public class OrderServiceImpl implements OrderService {
     public OrderServiceImpl(OrderRepo orderRepo, OrderCleaner orderCleaner) {
         this.orderRepo = orderRepo;
         this.orderCleaner = orderCleaner;
-        this.orderValidationPeriod = 10;
+        this.orderValidationPeriod = 600;
     }
 
     public void setOrderValidationPeriod(int orderValidationPeriod) {
@@ -62,10 +62,5 @@ public class OrderServiceImpl implements OrderService {
         // may be commented out in case we want to get a number of remaining items
         orderWithLowestPrice.setQuantity(numberOfBoughtItems);
         return orderWithLowestPrice;
-    }
-
-    @Override
-    public void deleteOrder(Order order) {
-        orderRepo.delete(order);
     }
 }
